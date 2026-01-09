@@ -62,12 +62,10 @@
       50% { transform: scale(1.15); }
     }
 
-    button.inicio {
-      background: none;
-      border: none;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.95rem;
+    .inicio {
+      text-align: center;
       color: #2f3a56;
+      font-size: 0.95rem;
       padding: 30px;
       cursor: pointer;
       animation: parpadeo 1.8s infinite;
@@ -77,29 +75,17 @@
       0%,100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
-
-    audio {
-      width: 100%;
-      margin-top: 20px;
-    }
   </style>
 </head>
 <body>
 
-  <button class="inicio" id="inicio">
+  <div class="inicio" id="inicio">
     Toca la pantalla 💙
-  </button>
+  </div>
 
   <div class="carta" id="carta">
     <h1>Para Wonho, mi chichón precioso 💙</h1>
-
     <div id="texto"></div>
-
-    <!-- AUDIO DESDE GOOGLE DRIVE (FUNCIONA) -->
-    <audio controls loop preload="auto">
-      <source src="https://drive.google.com/uc?export=download&id=1aG9dc_AUcW6lI9ZhRK-q2Ln5uebRMIuC" type="audio/mpeg">
-      Tu navegador no soporta audio.
-    </audio>
 
     <div class="firma">
       Att: Mimi,<br>
@@ -108,6 +94,8 @@
 
     <div class="corazon">💙</div>
   </div>
+
+  <audio id="musica" src="spring-snow.mp3" loop></audio>
 
   <script>
     const textoCompleto = `
@@ -153,6 +141,7 @@ Y si algún día el mundo pesa, que esta carta sea prueba de algo simple y fuert
     document.getElementById("inicio").addEventListener("click", () => {
       document.getElementById("inicio").style.display = "none";
       document.getElementById("carta").style.display = "block";
+      document.getElementById("musica").play();
       escribirTexto();
     });
   </script>
