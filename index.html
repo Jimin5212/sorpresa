@@ -147,11 +147,15 @@ Y si algún día el mundo pesa, que esta carta sea prueba de algo simple y fuert
       boton.style.display = "none";
       document.getElementById("carta").style.display = "block";
 
-      try {
-        await musica.play();
-      } catch (e) {
-        console.log("Audio bloqueado por el navegador");
-      }
+      musica.volume = 0.6;
+musica.currentTime = 0;
+musica.load();
+
+setTimeout(() => {
+  musica.play().catch(() => {
+    console.log("Chrome sigue bloqueando el audio");
+  });
+}, 300);
 
       escribirTexto();
     });
@@ -159,5 +163,6 @@ Y si algún día el mundo pesa, que esta carta sea prueba de algo simple y fuert
 
 </body>
 </html>
+
 
 
