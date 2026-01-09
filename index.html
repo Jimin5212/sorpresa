@@ -77,6 +77,11 @@
       0%,100% { opacity: 1; }
       50% { opacity: 0.5; }
     }
+
+    audio {
+      width: 100%;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
@@ -87,7 +92,14 @@
 
   <div class="carta" id="carta">
     <h1>Para Wonho, mi chichón precioso 💙</h1>
+
     <div id="texto"></div>
+
+    <!-- REPRODUCTOR (funciona siempre) -->
+    <audio id="musica" controls loop>
+      <source src="spring-snow.mp3" type="audio/mpeg">
+      Tu navegador no soporta audio.
+    </audio>
 
     <div class="firma">
       Att: Mimi,<br>
@@ -96,8 +108,6 @@
 
     <div class="corazon">💙</div>
   </div>
-
- <source src="audio.mp3" type="audio/mpeg">
 
   <script>
     const textoCompleto = `
@@ -140,30 +150,12 @@ Y si algún día el mundo pesa, que esta carta sea prueba de algo simple y fuert
       }
     }
 
-    const boton = document.getElementById("inicio");
-    const musica = document.getElementById("musica");
-
-    boton.addEventListener("click", async () => {
-      boton.style.display = "none";
+    document.getElementById("inicio").addEventListener("click", () => {
+      document.getElementById("inicio").style.display = "none";
       document.getElementById("carta").style.display = "block";
-
-      musica.volume = 0.6;
-musica.currentTime = 0;
-musica.load();
-
-setTimeout(() => {
-  musica.play().catch(() => {
-    console.log("Chrome sigue bloqueando el audio");
-  });
-}, 300);
-
       escribirTexto();
     });
   </script>
 
 </body>
 </html>
-
-
-
-
